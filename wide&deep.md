@@ -1,4 +1,5 @@
 # wide&deep  根据网络结构自己重新编写
+
 ## WIDE
 
 
@@ -27,3 +28,5 @@
                         i+=1
                 t.append(tf.cast(outputs,tf.float32))
             return tf.cast(t,tf.float32)
+## DEEP
+    
