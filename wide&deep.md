@@ -1,6 +1,5 @@
-# wide&deep
+# wide&deep  根据网络结构自己重新编写
 """
-# 根据网络结构重新编写
 class WideLayer(layers.Layer):
     def __init__(self):
         super(WideLayer, self).__init__()
