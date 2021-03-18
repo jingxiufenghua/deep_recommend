@@ -2,6 +2,7 @@
 
 
 """
+
 class WideLayer(layers.Layer):
     def __init__(self):
         super(WideLayer, self).__init__()
