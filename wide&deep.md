@@ -1,4 +1,6 @@
 # wide&deep  根据网络结构自己重新编写
+
+
 """
 class WideLayer(layers.Layer):
     def __init__(self):
@@ -24,4 +26,3 @@ class WideLayer(layers.Layer):
                     i+=1
             t.append(tf.cast(outputs,tf.float32))
         return tf.cast(t,tf.float32)
- """
