@@ -1,4 +1,6 @@
 # wide&deep  根据网络结构自己重新编写
+![image](img/wide&deep.png)
+![image](img/inner_part.png)
 
 ## WIDE
 
@@ -29,4 +31,39 @@
                 t.append(tf.cast(outputs,tf.float32))
             return tf.cast(t,tf.float32)
 ## DEEP
+    class DeepPart(tf.keras.Model):
+    def __init__(self):
+        super(DeepPart, self).__init__(name='DeepPart')
+        self.hidden1 = layers.Dense(128, activation='relu')
+        self.hidden2 = layers.Dense(128, activation='relu')
+
+    def call(self, inputs):
+        h1 = self.hidden1(inputs)
+        h2 = self.hidden2(h1)
+        return h2
+## Model
+    class WideAndDeepModel(tf.keras.Model):
+    def __init__(self):
+        super(WideAndDeepModel, self).__init__(name='WideAndDeepModel')
+        self.wideLayer = WideLayer()
+        self.deepPart = DeepPart()
+        self.out_layer = layers.Dense(1, activation='sigmoid')
+
+    def call(self, inputs):
+        wide = self.wideLayer(inputs)
+        deep = self.deepPart(inputs)
+        out = self.out_layer(tf.concat([wide, deep], 1))
+        return out
+    
+    
+    model = WideAndDeepModel()
+
+    model.compile(optimizer=tf.keras.optimizers.Adam(),
+                  loss=tf.keras.losses.binary_crossentropy,
+                  metrics=['binary_crossentropy'])
+
+    X,Y = readData.readData()
+    model.fit(X, Y, batch_size=batch_size, epochs=5)
+
+
     
