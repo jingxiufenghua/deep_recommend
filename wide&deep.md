@@ -1,6 +1,8 @@
 # wide&deep  根据网络结构自己重新编写
 ![image](img/wide&deep.png)
 ![image](img/inner_part.png)
+#下图摘自其他人，非本人所画，特此声明
+![image](img/structure_wide_deep.png)
 
 ## WIDE
 
